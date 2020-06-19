@@ -26,6 +26,8 @@ build:
 publish:
 	@export PATH="$$HOME/bin:$$PATH"
 	pack build jamesclonk/cf-env:${COMMIT_SHA} --builder heroku/buildpacks:18 --publish
+	docker tag jamesclonk/cf-env:${COMMIT_SHA} jamesclonk/cf-env:latest
+	docker push jamesclonk/cf-env:latest
 
 .PHONY: run
 ## run: run docker image
