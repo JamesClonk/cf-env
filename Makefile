@@ -9,6 +9,12 @@ help:
 	@echo "Usage:"
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
+.PHONY: login
+## login: login to docker hub
+login:
+	@export PATH="$$HOME/bin:$$PATH"
+	@echo $$DOCKER_PASS | docker login -u $$DOCKER_USER --password-stdin
+
 .PHONY: build
 ## build: build docker image
 build:

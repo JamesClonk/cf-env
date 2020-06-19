@@ -5,6 +5,8 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: make setup
-      - run: make build
+      - run: make login
       - run: make publish
